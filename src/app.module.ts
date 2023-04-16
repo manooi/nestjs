@@ -13,12 +13,12 @@ const typeOrmConfig: TypeOrmModuleOptions = {
   username: 'postgres', // specify your PostgreSQL username
   password: 'password', // specify your PostgreSQL password
   database: 'postgres', // specify the name of your PostgreSQL database
-  synchronize: false, // set to true to automatically synchronize database schema with TypeORM entities during development (use with caution in production)
+  synchronize: true, // set to true to automatically synchronize database schema with TypeORM entities during development (use with caution in production)
   logging: true, // set to true to enable logging of database queries and other TypeORM-related messages
   entities: [__dirname + '/**/*.entity{.ts,.js}'], // specify the path to your TypeORM entities
   migrations: [__dirname + '/**/*.migration{.ts,.js}'], // specify the path to your TypeORM migrations
   subscribers: [__dirname + '/**/*.subscriber{.ts,.js}'], // specify the path to your TypeORM subscribers
-  migrationsRun : false,
+  migrationsRun : true,
   migrationsTableName: 'migrations',
 };
 
