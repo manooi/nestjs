@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -14,5 +14,14 @@ export class UsersService {
         user.password = password;
 
         return this.repo.save(user);
+    }
+
+    async remove(id: number) {
+        const user: User = await this.repo.findOne({where: {id : id}});
+        if(user != null) {
+            return this.repo.remove(user);
+        }
+        return new NotFoundException();
+
     }
 }
