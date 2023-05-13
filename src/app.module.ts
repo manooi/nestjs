@@ -19,15 +19,15 @@ const typeOrmConfig: TypeOrmModuleOptions = {
   migrations: [__dirname + '/**/*.migration{.ts,.js}'], // specify the path to your TypeORM migrations
   subscribers: [__dirname + '/**/*.subscriber{.ts,.js}'], // specify the path to your TypeORM subscribers
   migrationsRun : true,
-  migrationsTableName: 'migrations',
+  migrationsTableName: 'migrations'
 };
-
 
 @Module({
   imports: [
     UsersModule,
     ReportsModule,
-    TypeOrmModule.forRoot(typeOrmConfig)],
+    TypeOrmModule.forRoot(typeOrmConfig),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

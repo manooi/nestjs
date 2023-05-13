@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Patch, Delete, Param } from '@nestjs/common';
+import { Controller, Post, Body, Patch, Delete, Param, Get, InternalServerErrorException } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UsersService } from './users.service';
 
@@ -8,13 +8,18 @@ export class UsersController {
 
     }
 
+    @Get(':id')
+    getUser(@Param('id') id: string) {
+        return this.userService.findOne(+id);
+    }
+
     @Post('/signup')
     createUser(@Body() body: CreateUserDto) {
         return this.userService.create(body.email, body.password);
     }
 
     @Delete('/signup/:id')
-    updateUser(@Param('id') id: string){
+    updateUser(@Param('id') id: string) {
         return this.userService.remove(+id);
     }
 }

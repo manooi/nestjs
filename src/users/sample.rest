@@ -8,5 +8,10 @@ Content-Type: application/json
     "thisWillBeStripped" : 2
 }
 
+
+### Find a user
+GET http://localhost:3000/auth/13
+
+
 ### Delete a user
 DELETE http://localhost:3000/auth/signup/12
